@@ -7,7 +7,7 @@ result = ['']
 
 def save_result():
     df = pd.DataFrame(result[1:], columns=['title', 'press', 'date', 'link'])
-    df.to_excel('naver_finance_news.xlsx', index=False, encoding='cp949')
+    df.to_excel('./datasets/naver_finance_news.xlsx', index=False, encoding='cp949')
 
 
 def extract_article_info(c):

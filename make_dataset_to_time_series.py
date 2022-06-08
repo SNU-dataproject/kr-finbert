@@ -11,9 +11,7 @@ def eliminate_dup_date(d, new_d):
     return new_d
 
 
-df = pd.read_excel('combined_dataset_cleaned2.xlsx', index_col=0)
+df = pd.read_excel('./datasets/combined_dataset_cleaned.xlsx', index_col=0)
 df['duplicated'] = df.duplicated(['date'])
-print(df.tail())
 res = eliminate_dup_date(df, pd.DataFrame(columns=['date', 'title']))
-print(res.tail())
-res.to_excel('preprocessed_dup_eliminated_dataset.xlsx', encoding='cp949')
+res.to_excel('./datasets/preprocessed_dup_eliminated_dataset.xlsx', encoding='cp949')

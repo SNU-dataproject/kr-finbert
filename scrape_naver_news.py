@@ -11,7 +11,7 @@ result = []
 
 def save_result():
     df = pd.DataFrame(result[:], columns=['date', 'title'])
-    df.to_excel('naver_news.xlsx', index=False, encoding='cp949')
+    df.to_excel('./datasets/naver_news.xlsx', index=False, encoding='cp949')
 
 
 def get_info():

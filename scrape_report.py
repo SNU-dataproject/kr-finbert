@@ -10,7 +10,7 @@ final_result = []
 
 def save_result():
     df = pd.DataFrame(final_result[:], columns=['date', 'title'])
-    df.to_excel('report.xlsx', index=False, encoding='cp949')
+    df.to_excel('./datasets/report.xlsx', index=False, encoding='cp949')
 
 
 def preprocess(row):
