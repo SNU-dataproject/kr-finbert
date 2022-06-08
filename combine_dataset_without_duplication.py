@@ -9,26 +9,6 @@ def print_df(d):
     print(tabulate(d, headers='keys', tablefmt='psql'))
 
 
-def date_preprocess(d):
-    d['date'] = d['date'].apply(lambda x: re.sub('[./]', '', x))
-    return d
-
-
-finance_news = pd.read_excel('naver_finance_news.xlsx', usecols=[2, 0])
-finance_news = date_preprocess(finance_news)
-
-naver_news = pd.read_excel('naver_news.xlsx')
-naver_news = date_preprocess(naver_news)
-
-report = pd.read_excel('report.xlsx')
-report = date_preprocess(report)
-
-
-df = naver_news.append(finance_news, ignore_index=True)
-df = df.append(report, ignore_index=True)
-df = df.sort_values('date', ignore_index=True)
-
-
 # 날짜 중복삭제 & title 합치기
 def eliminate_dup_date(d, new_d):
     for date, tit, dup in d.values:
@@ -39,6 +19,7 @@ def eliminate_dup_date(d, new_d):
     return new_d
 
 
+df = pd.read_excel('combined_dataset.xlsx', index_col=0)
 # df에 중복 여부 컬럼 추가
 df['duplicated'] = df.duplicated(['date'])
 print_df(df.head(10))
