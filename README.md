@@ -1,6 +1,6 @@
 # kr-finbert PJT
 
-## Dataset
+# Dataset
 ### 1. raw data 📄
 ##### 네이버 금융의 뉴스 기사, 네이버 기사에 검색 조건 추가, 증권사 레포트 크롤링
 검색 기업 : **삼성전자**
@@ -45,3 +45,12 @@ MTD                    -> 월초 누계
 ##### 각각 title에 대하여 kr-finBERT 모델 적용, Neg Neu Pos 수치와 대표값 표시
 * [kr_finbert_getVal_from_file.ipynb](https://github.com/SNU-dataproject/kr-finbert/blob/main/kr_finbert_getVal_from_file.ipynb)
 * [preprocessed_dup_eliminated_dataset_finBERT.xlsx](https://github.com/SNU-dataproject/kr-finbert/blob/main/datasets/preprocessed_dup_eliminated_dataset_finBERT.xlsx)
+
+### 6. add finbert score to FinanceDataReader
+##### FinanceDataReader의 삼성전자 정보에 kr-finBERT 대표값 col 추가
+
+---
+
+# Model
+### 1. LSTM
+* [LSTM_model.ipynb](https://github.com/SNU-dataproject/kr-finbert/blob/main/model/lstm_0609_v2.ipynb)
