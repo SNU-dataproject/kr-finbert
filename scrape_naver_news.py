@@ -10,8 +10,7 @@ result = []
 
 def save_result():
     df = pd.DataFrame(result[:], columns=['date', 'title'])
-    # df.to_excel('./datasets/raw_naver_news_keyword1.xlsx', index=False, encoding='cp949')
-    df.to_excel('./datasets/raw_naver_news_final.xlsx', index=False, encoding='cp949')
+    df.to_excel('./datasets/raw_naver_news.xlsx', index=False, encoding='cp949')
 
 
 def get_info():

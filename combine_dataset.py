@@ -101,7 +101,7 @@ def combine_dataset(n, f, r):
 
 
 def get_preprocessed_dataset():
-    combined_dataset = combine_dataset(pd.read_excel('./datasets/raw_naver_news_final.xlsx'), \
+    combined_dataset = combine_dataset(pd.read_excel('./datasets/raw_naver_news.xlsx'), \
                     pd.read_excel('./datasets/raw_naver_finance_news.xlsx', usecols="A,C"), \
                     pd.read_excel('./datasets/raw_report.xlsx'))
 
