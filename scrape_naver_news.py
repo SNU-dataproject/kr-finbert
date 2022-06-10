@@ -1,5 +1,4 @@
-# 네이버기사에 +주식 +주가 + 삼전 "삼성전자"로 검색, 기간 2021.06.01 ~ 2022.02.07 설정
-
+# 네이버기사에 +주가 +삼전 기간 2021.06.01 ~ 2022.02.07 설정해서 검색
 from selenium import webdriver
 from selenium.common.exceptions import NoSuchElementException
 import time
@@ -11,15 +10,17 @@ result = []
 
 def save_result():
     df = pd.DataFrame(result[:], columns=['date', 'title'])
-    df.to_excel('./datasets/naver_news.xlsx', index=False, encoding='cp949')
+    # df.to_excel('./datasets/raw_naver_news_keyword1.xlsx', index=False, encoding='cp949')
+    df.to_excel('./datasets/raw_naver_news_final.xlsx', index=False, encoding='cp949')
 
 
 def get_info():
     driver = webdriver.Chrome('chromedriver')
-    base_url = 'https://search.naver.com/search.naver?where=news&sm=tab_pge&query=%2B%EC%A3%BC%EC%8B%9D%20%2B%EC%A3%BC%EA%B0%80%20%2B%20%EC%82%BC%EC%A0%84%20%22%EC%82%BC%EC%84%B1%EC%A0%84%EC%9E%90%22&sort=1&photo=0&field=0&pd=3&ds=2021.06.01&de=2022.02.07&mynews=0&office_type=0&office_section_code=0&news_office_checked=&nso=so:dd,p:from20210601to20220207,a:all'
+    base_url = 'https://search.naver.com/search.naver?where=news&sm=tab_pge&query=%2B%EC%A3%BC%EA%B0%80%20%2B%EC%82%BC%EC%A0%84&sort=1&photo=0&field=0&pd=3&ds=2017.06.01&de=2022.02.07&mynews=0&office_type=0&office_section_code=0&news_office_checked=&nso=so:dd,p:from20170601to20220207,a:all'
     page_no = 0
     while 1:
         try:
+            # url = base_url + f'&start={page_no}1'
             url = base_url + f'&start={page_no}1'
             driver.get(url)
             time.sleep(2)
