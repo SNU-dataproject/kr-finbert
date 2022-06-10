@@ -31,21 +31,13 @@ def get_info_from_each_page(driver):
         result.append([date, cleaned_summary])
 
 
-def get_info(driver, last_page):
-    i, flag = 2, 0
-    k = 1
-    while True:
-        driver.find_element_by_xpath('//*[@id="cntsPaging01"]/ul').find_elements_by_tag_name('li')[i].click()
-        time.sleep(3)
-        if i == last_page:
-            break
-        if i == 4 and not flag:
-            i, flag = 2, 1
-            driver.find_element_by_xpath('//*[@id="cntsPaging01"]/ul').find_elements_by_tag_name('li')[i].click()
-        print(f"--------- {k}페이지 크롤링 진행 중 ---------")
+def get_info(driver, page):
+    while page > 0:
+        print(f"--------- {page}페이지 크롤링 진행 중 ---------")
         get_info_from_each_page(driver)
-        i += 1
-        k += 1
+        driver.find_element_by_xpath('//*[@id="cntsPaging01_prev_btn"]').click()
+        time.sleep(1)
+        page -= 1
 
 
 def get_last_page(driver):
@@ -58,14 +50,16 @@ def get_last_page(driver):
     driver.switch_to.frame('iframe1')
     time.sleep(2)
     driver.find_element_by_xpath('//*[@id="P_isinList_0_P_group87"]').click()
+    time.sleep(1)
     driver.switch_to.default_content()
 
     # 조회기간 start에 2021년6월1일 입력 후 엔터
     select_box_start = driver.find_element_by_xpath('//*[@id="sd1_inputCalendar1_input"]')
     select_box_start.click()
     select_box_start.clear()
-    select_box_start.send_keys('20210601')
+    select_box_start.send_keys('20170601')
     select_box_start.send_keys(Keys.TAB)
+    time.sleep(2)
 
     # 조회 클릭 -> 페이지 불러오는 데 시간 걸리므로 3초 정도 sleep
     submit_button = driver.find_element_by_xpath('//*[@id="group10"]')
@@ -73,12 +67,16 @@ def get_last_page(driver):
     time.sleep(3)
 
     # paging에서 >> 버튼 눌러서 마지막 페이지 번호 가져오기
-    driver.find_element_by_xpath('//*[@id="cntsPaging01"]/ul').find_elements_by_tag_name('li')[-1].click()
-    time.sleep(2)
-    last_page = int(driver.find_element_by_xpath('//*[@id="cntsPaging01"]/ul').find_elements_by_tag_name('li')[-3].text.strip())
-    driver.find_element_by_xpath('//*[@id="cntsPaging01"]/ul').find_elements_by_tag_name('li')[0].click()
-    time.sleep(2)
-    return last_page
+    pages = [1]
+    while 1:
+        driver.find_element_by_xpath('//*[@id="cntsPaging01"]/ul').find_elements_by_tag_name('li')[-1].click()
+        time.sleep(2)
+        last_page = int(driver.find_element_by_xpath('//*[@id="cntsPaging01"]/ul').find_elements_by_tag_name('li')[-3].text.strip())
+        if last_page == pages[-1]:
+            break
+        pages.append(last_page)
+    print(pages)
+    return pages[-1]
 
 
 def set_driver(url):
@@ -93,9 +91,10 @@ def crawling():
 
     driver = set_driver(url)
     last_page = get_last_page(driver)
+    print(last_page)
     get_info(driver, last_page)
     driver.close()
-    
+
     for idx, i in enumerate(result):
         if i == ['', '']:
             continue
@@ -103,3 +102,6 @@ def crawling():
         print(idx, i)
 
     save_result()
+
+
+crawling()
