@@ -48,6 +48,12 @@ MTD                    -> 월초 누계
 
 ### 6. add finbert score to FinanceDataReader
 ##### FinanceDataReader의 삼성전자 정보에 kr-finBERT 대표값 col 추가
+``` python
+for i in range(len(s)) : 
+    for j in range(len(Fb_dataset)) :
+        if(s.index[i] == Fb_dataset['date'][j]) :
+            s["sentiment"][i] = Fb_dataset['sentiment'][j]
+```
 
 ---
 
