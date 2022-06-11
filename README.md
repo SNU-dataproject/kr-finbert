@@ -1,7 +1,7 @@
 # kr-finbert PJT
 
 # Dataset
-### 1. raw data 📄
+### 1. Raw Data Crawling 📄
 ##### 네이버 금융의 뉴스 기사, 네이버 기사에 검색 조건 추가, 증권사 레포트 크롤링
 검색 기업 : **삼성전자**, **현대자동차**
 ###### Code
@@ -16,7 +16,7 @@
 * [hyundai_raw_naver_news.xlsx](https://github.com/SNU-dataproject/kr-finbert/blob/main/datasets/hyundai_raw_naver_news.xlsx)
 * [hyundai_raw_report.xlsx](https://github.com/SNU-dataproject/kr-finbert/blob/main/datasets/hyundai_raw_report.xlsx)
 
-### 2. merge into one file & sort by date & preprocess & combine data from one date into one row 📚
+### 2. Merge & Sort & Preprocess & Combine 📚
 ##### 크롤링으로 생성된 파일들을 1개로 병합하고 날짜 기준으로 정렬하여 전처리, 한 날짜에 데이터가 여러 row인 경우 title을 한 문장으로 combine
 ###### * 전처리 조건
 ```
@@ -27,7 +27,7 @@ YTD                    -> 연초 누계
 MTD                    -> 월초 누계
 분기 표현 1Q21F        -> 21년도 1분기 예측값
 분기 표현 1Q21         -> 21년도 1분기
-반기 표현 1Q21         -> 21년도 상반기
+반기 표현 1H21         -> 21년도 상반기
 [내용] 제거
 문장 시작의 "삼성전자-" 삭제
 다중 띄어쓰기 제거
@@ -41,7 +41,7 @@ MTD                    -> 월초 누계
 * [hyundai_cleaned_combined_dataset.xlsx](https://github.com/SNU-dataproject/kr-finbert/blob/main/datasets/hyundai_cleaned_combined_dataset.xlsx)
 
 
-### 3. add finbert score 😱
+### 3. Add finbert score 😱
 ##### 각각 title에 대하여 kr-finBERT 모델 적용, Neg Neu Pos 수치와 대표값 표시
 ###### Code
 * [kr_finbert_getVal_from_file.ipynb](https://github.com/SNU-dataproject/kr-finbert/blob/main/kr_finbert_getVal_from_file.ipynb)
@@ -49,7 +49,7 @@ MTD                    -> 월초 누계
 * [samsung_cleaned_combined_dataset_finBERT.xlsx](https://github.com/SNU-dataproject/kr-finbert/blob/main/datasets/samsung_cleaned_combined_dataset_finBERT.xlsx)
 * [hyundai_cleaned_combined_dataset_finBERT.xlsx](https://github.com/SNU-dataproject/kr-finbert/blob/main/datasets/hyundai_cleaned_combined_dataset_finBERT.xlsx)
 
-### 4. add finbert score to FinanceDataReader😇
+### 4. Add finbert score to FinanceDataReader😇
 ##### FinanceDataReader 정보에 kr-finBERT col 추가 및 결측치 처리
 ###### Code
 ``` python
