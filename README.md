@@ -51,6 +51,7 @@ MTD                    -> 월초 누계
 
 ### 4. add finbert score to FinanceDataReader😇
 ##### FinanceDataReader 정보에 kr-finBERT col 추가 및 결측치 처리
+###### Code
 ``` python
 from datetime import datetime
 
@@ -95,6 +96,9 @@ for i in range(len(s)) :
     elif(s['sentiment'][i] == "neuVal") : s['sentiment'][i] = 0
     elif(s['sentiment'][i] == "posVal") : s['sentiment'][i] = 1
 ```
+###### Dataset
+* [samsung_stock_dataset_finBERT_notnull.xlsx](https://github.com/SNU-dataproject/kr-finbert/blob/main/datasets/samsung_stock_dataset_finBERT_notnull.xlsx)
+* [hyundai_stock_dataset_finBERT_notnull.xlsx](https://github.com/SNU-dataproject/kr-finbert/blob/main/datasets/hyundai_stock_dataset_finBERT_notnull.xlsx)
 
 ---
 
