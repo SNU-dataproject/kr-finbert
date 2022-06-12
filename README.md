@@ -108,4 +108,4 @@ for i in range(len(s)) :
 * Select columns(normalization X) : [model_select_column_no_normalize.ipynb](https://github.com/SNU-dataproject/kr-finbert/blob/main/model/model_select_column_no_normalize.ipynb)
 * Select columns(normalization O) : [model_select_column.ipynb](https://github.com/SNU-dataproject/kr-finbert/blob/main/model/model_select_column.ipynb)
 * Add finBERT col : [model_add_bert.ipynb](https://github.com/SNU-dataproject/kr-finbert/blob/main/model/model_add_bert.ipynb)
-* [model_add_all.ipynb](https://github.com/SNU-dataproject/kr-finbert/blob/main/model/model_add_all.ipynb)
+* Add all col : [model_add_all.ipynb](https://github.com/SNU-dataproject/kr-finbert/blob/main/model/model_add_all.ipynb)
