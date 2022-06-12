@@ -2,6 +2,7 @@
 
 # 발표자료
 [발표자료_초안.pdf](https://github.com/SNU-dataproject/kr-finbert/blob/main/220614%20%EB%B9%85%EB%8D%B0%EC%9D%B4%ED%84%B0%20%EB%B0%9C%ED%91%9C_%EC%B4%88%EC%95%88.pdf)
+-> 4-10pg, 30pg 수정 예정
 
 # Dataset
 ### 1. Raw Data Crawling 📄
