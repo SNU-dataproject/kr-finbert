@@ -1,5 +1,8 @@
 # kr-finbert PJT
 
+# 발표자료
+[발표자료_초안.pdf](https://github.com/SNU-dataproject/kr-finbert/blob/main/220614%20%EB%B9%85%EB%8D%B0%EC%9D%B4%ED%84%B0%20%EB%B0%9C%ED%91%9C_%EC%B4%88%EC%95%88.pdf)
+
 # Dataset
 ### 1. Raw Data Crawling 📄
 ##### 네이버 금융의 뉴스 기사, 네이버 기사에 검색 조건 추가, 증권사 레포트 크롤링
