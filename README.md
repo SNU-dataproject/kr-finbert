@@ -13,7 +13,7 @@
 * [scrape_naver_news.py](https://github.com/SNU-dataproject/kr-finbert/blob/main/scrape_naver_news.py)
 * [scrape_report.py](https://github.com/SNU-dataproject/kr-finbert/blob/main/scrape_report.py)
 ###### Dataset
-* [samsung_raw_naver_finance_news.xlsx](https://github.com/SNU-dataproject/kr-finbert/blob/main/datasets/samsung_raw_naver_finance_news.xlsx)
+* [samsung_raw_naver_finance_news.xlsx](https://github.com/SNU-dataproject/kr-finbert/blob/main/datasets/samsung/samsung_raw_naver_finance_news.xlsx)
 * [samsung_raw_naver_news.xlsx](https://github.com/SNU-dataproject/kr-finbert/blob/main/datasets/samsung_raw_naver_news.xlsx)
 * [samsung_raw_report.xlsx](https://github.com/SNU-dataproject/kr-finbert/blob/main/datasets/samsung_raw_report.xlsx)
 * [hyundai_raw_naver_finance_news.xlsx](https://github.com/SNU-dataproject/kr-finbert/blob/main/datasets/hyundai_raw_naver_finance_news.xlsx)
