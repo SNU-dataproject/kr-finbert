@@ -14,12 +14,14 @@
 * [scrape_report.py](https://github.com/SNU-dataproject/kr-finbert/blob/main/scrape_report.py)
 ###### Dataset
 * [samsung_raw_naver_finance_news.xlsx](https://github.com/SNU-dataproject/kr-finbert/blob/main/datasets/samsung/samsung_raw_naver_finance_news.xlsx)
-* [samsung_raw_naver_news.xlsx](https://github.com/SNU-dataproject/kr-finbert/blob/main/datasets/samsung_raw_naver_news.xlsx)
-* [samsung_raw_report.xlsx](https://github.com/SNU-dataproject/kr-finbert/blob/main/datasets/samsung_raw_report.xlsx)
-* [hyundai_raw_naver_finance_news.xlsx](https://github.com/SNU-dataproject/kr-finbert/blob/main/datasets/hyundai_raw_naver_finance_news.xlsx)
-* [hyundai_raw_naver_news.xlsx](https://github.com/SNU-dataproject/kr-finbert/blob/main/datasets/hyundai_raw_naver_news.xlsx)
-* [hyundai_raw_report.xlsx](https://github.com/SNU-dataproject/kr-finbert/blob/main/datasets/hyundai_raw_report.xlsx)
-
+* [samsung_raw_naver_news.xlsx](https://github.com/SNU-dataproject/kr-finbert/blob/main/datasets/samsung/samsung_raw_naver_news.xlsx)
+* [samsung_raw_report.xlsx](https://github.com/SNU-dataproject/kr-finbert/blob/main/datasets/samsung/samsung_raw_report.xlsx)
+* [hyundai_raw_naver_finance_news.xlsx](https://github.com/SNU-dataproject/kr-finbert/blob/main/datasets/hyundai/hyundai_raw_naver_finance_news.xlsx)
+* [hyundai_raw_naver_news.xlsx](https://github.com/SNU-dataproject/kr-finbert/blob/main/datasets/hyundai/hyundai_raw_naver_news.xlsx)
+* [hyundai_raw_report.xlsx](https://github.com/SNU-dataproject/kr-finbert/blob/main/datasets/hyundai/hyundai_raw_report.xlsx)
+* [kakaobank_raw_naver_finance_news.xlsx](https://github.com/SNU-dataproject/kr-finbert/blob/main/datasets/hyundai/hyundai_raw_naver_finance_news.xlsx)
+* [kakaobank_raw_naver_news.xlsx](https://github.com/SNU-dataproject/kr-finbert/blob/main/datasets/kakaobank/kakaobank_raw_naver_news.xlsx)
+* [kakaobank_raw_report.xlsx](https://github.com/SNU-dataproject/kr-finbert/blob/main/datasets/kakaobank/kakaobank_raw_report.xlsx)
 ### 2. Merge & Sort & Preprocess & Combine 📚
 ##### 크롤링으로 생성된 파일들을 1개로 병합하고 날짜 기준으로 정렬하여 전처리, 한 날짜에 데이터가 여러 row인 경우 title을 한 문장으로 combine
 ###### * 전처리 조건
@@ -41,8 +43,9 @@ MTD                    -> 월초 누계
 ###### Code
 * [combine_dataset.py](https://github.com/SNU-dataproject/kr-finbert/blob/main/combine_dataset.py)
 ###### Dataset
-* [samsung_cleaned_combined_dataset.xlsx](https://github.com/SNU-dataproject/kr-finbert/blob/main/datasets/samsung_cleaned_combined_dataset.xlsx)
-* [hyundai_cleaned_combined_dataset.xlsx](https://github.com/SNU-dataproject/kr-finbert/blob/main/datasets/hyundai_cleaned_combined_dataset.xlsx)
+* [samsung_cleaned_combined_dataset.xlsx](https://github.com/SNU-dataproject/kr-finbert/blob/main/datasets/samsung/samsung_cleaned_combined_dataset.xlsx)
+* [hyundai_cleaned_combined_dataset.xlsx](https://github.com/SNU-dataproject/kr-finbert/blob/main/datasets/hyundai/hyundai_cleaned_combined_dataset.xlsx)
+* [kakaobank_cleaned_combined_dataset.xlsx](https://github.com/SNU-dataproject/kr-finbert/blob/main/datasets/kakaobank/kakaobank_cleaned_combined_dataset.xlsx)
 
 
 ### 3. Add finbert score 😱
@@ -50,8 +53,10 @@ MTD                    -> 월초 누계
 ###### Code
 * [kr_finbert_getVal_from_file.ipynb](https://github.com/SNU-dataproject/kr-finbert/blob/main/kr_finbert_getVal_from_file.ipynb)
 ###### Dataset
-* [samsung_cleaned_combined_dataset_finBERT.xlsx](https://github.com/SNU-dataproject/kr-finbert/blob/main/datasets/samsung_cleaned_combined_dataset_finBERT.xlsx)
-* [hyundai_cleaned_combined_dataset_finBERT.xlsx](https://github.com/SNU-dataproject/kr-finbert/blob/main/datasets/hyundai_cleaned_combined_dataset_finBERT.xlsx)
+* [samsung_cleaned_combined_dataset_finBERT.xlsx](https://github.com/SNU-dataproject/kr-finbert/blob/main/datasets/samsung/samsung_cleaned_combined_dataset_finBERT.xlsx)
+* [hyundai_cleaned_combined_dataset_finBERT.xlsx](https://github.com/SNU-dataproject/kr-finbert/blob/main/datasets/hyundai/hyundai_cleaned_combined_dataset_finBERT.xlsx)
+* [kakaobank_cleaned_combined_dataset_finBERT.xlsx](https://github.com/SNU-dataproject/kr-finbert/blob/main/datasets/kakaobank/kakaobank_cleaned_combined_dataset_finBERT.xlsx)
+
 
 ### 4. Add finbert score to FinanceDataReader😇
 ##### FinanceDataReader 정보에 kr-finBERT col 추가 및 결측치 처리
@@ -101,8 +106,9 @@ for i in range(len(s)) :
     elif(s['sentiment'][i] == "posVal") : s['sentiment'][i] = 1
 ```
 ###### Dataset
-* [samsung_stock_dataset_finBERT_notnull.xlsx](https://github.com/SNU-dataproject/kr-finbert/blob/main/datasets/samsung_stock_dataset_finBERT_notnull.xlsx)
-* [hyundai_stock_dataset_finBERT_notnull.xlsx](https://github.com/SNU-dataproject/kr-finbert/blob/main/datasets/hyundai_stock_dataset_finBERT_notnull.xlsx)
+* [samsung_stock_dataset_finBERT_notnull.xlsx](https://github.com/SNU-dataproject/kr-finbert/blob/main/datasets/samsung/samsung_stock_dataset_finBERT_notnull.xlsx)
+* [hyundai_stock_dataset_finBERT_notnull.xlsx](https://github.com/SNU-dataproject/kr-finbert/blob/main/datasets/hyundai/hyundai_stock_dataset_finBERT_notnull.xlsx)
+* [kakaobank_stock_dataset_finBERT_notnull.xlsx](https://github.com/SNU-dataproject/kr-finbert/blob/main/datasets/kakaobank/kakaobank_stock_dataset_finBERT_notnull.xlsx) 
 
 ---
 
