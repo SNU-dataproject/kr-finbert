@@ -76,6 +76,10 @@ def preprocess(row):
     row = re.sub(r'\[[^)]*\]', '', row)
     # 문장시작이 "삼성전자-"인 경우 삭제
     if (row[:5] == "삼성전자-"): row = row[5:]
+    if (row[:6] == "현대자동차-"): row = row[6:]
+    if (row[:4] == "현대차-"): row = row[4:]
+    if (row[:6] == "카카오뱅크-"): row = row[6:]
+    if (row[:3] == "카뱅-"): row = row[3:]
     # 다중 띄어쓰기
     row = re.sub(' +', ' ', row)
     # 앞뒤 공백
