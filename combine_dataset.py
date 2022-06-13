@@ -105,39 +105,58 @@ def combine_dataset(n, f, r):
 
 
 def get_preprocessed_dataset():
-    combined_dataset = combine_dataset(pd.read_excel('./datasets/raw_naver_news.xlsx'), \
-                    pd.read_excel('./datasets/raw_naver_finance_news.xlsx', usecols="A,C"), \
-                    pd.read_excel('./datasets/raw_report.xlsx'))
 
-    logCnt = 1000
-    plusCnt = 1000
-    for i in range(len(combined_dataset)):
-        if (i == logCnt):
-            print(i)
-            logCnt += plusCnt
+    for company_name in ["삼성전자", "현대자동차", "카카오뱅크"]:
+        if company_name == '삼성전자':
+            combined_dataset = combine_dataset(pd.read_excel('./datasets/samsung/samsung_raw_naver_news.xlsx'), \
+                                               pd.read_excel('./datasets/samsung/samsung_raw_naver_finance_news.xlsx',
+                                                             usecols="A,C"), \
+                                               pd.read_excel('./datasets/samsung/samsung_raw_report.xlsx'))
+        elif company_name == '현대자동차':
+            combined_dataset = combine_dataset(pd.read_excel('./datasets/hyundai/hyundai_raw_naver_news.xlsx'), \
+                                               pd.read_excel('./datasets/hyundai/hyundai_raw_naver_finance_news.xlsx',
+                                                             usecols="A,C"), \
+                                               pd.read_excel('./datasets/hyundai/hyundai_raw_report.xlsx'))
+        elif company_name == '카카오뱅크':
+            combined_dataset = combine_dataset(pd.read_excel('./datasets/kakaobank/kakaobank_raw_naver_news.xlsx'), \
+                                               pd.read_excel('./datasets/kakaobank/kakaobank_raw_naver_finance_news.xlsx'), \
+                                               pd.read_excel('./datasets/kakaobank/kakaobank_raw_report.xlsx'))
+        else: return
+        logCnt = 1000
+        plusCnt = 1000
+        for i in range(len(combined_dataset)):
+            if (i == logCnt):
+                print(i)
+                logCnt += plusCnt
 
-        # 영어로만 구성된 row는 drop
-        if (len(re.findall(u'[가-힣]+', combined_dataset['title'][i])) > 0):
-            combined_dataset['title'][i] = preprocess(combined_dataset['title'][i])
-        else:
-            combined_dataset = combined_dataset.drop(i)
+            # 영어로만 구성된 row는 drop
+            if (len(re.findall(u'[가-힣]+', combined_dataset['title'][i])) > 0):
+                combined_dataset['title'][i] = preprocess(combined_dataset['title'][i])
+            else:
+                combined_dataset = combined_dataset.drop(i)
 
 
-    combined_dataset['title'].replace('', np.nan, inplace=True)
-    combined_dataset = combined_dataset.dropna(subset=['title'])
-    combined_dataset = combined_dataset.reset_index(drop=True)
-    print("Done!")
-    print_df(combined_dataset.tail())
+        combined_dataset['title'].replace('', np.nan, inplace=True)
+        combined_dataset = combined_dataset.dropna(subset=['title'])
+        combined_dataset = combined_dataset.reset_index(drop=True)
+        print("Done!")
+        print_df(combined_dataset.tail())
 
-    combined_dataset['duplicated'] = combined_dataset.duplicated(['date'])
-    res = eliminate_dup_date(combined_dataset, pd.DataFrame(columns=['date', 'title']))
+        combined_dataset['duplicated'] = combined_dataset.duplicated(['date'])
+        res = eliminate_dup_date(combined_dataset, pd.DataFrame(columns=['date', 'title']))
 
-    print("===========combined_dataset=============")
-    print_df(combined_dataset.tail(10))
-    print("===========핀버트 적용만 안 한 데이터 셋=============")
-    print_df(res.tail(10))
+        print("===========combined_dataset=============")
+        print_df(combined_dataset.tail(10))
+        print("===========핀버트 적용만 안 한 데이터 셋=============")
+        print_df(res.tail(10))
 
-    res.to_excel('./datasets/cleaned_combined_dataset.xlsx', encoding='cp949', index=False)
+        if company_name == '삼성전자':
+            res.to_excel('./datasets/samsung/samsung_cleaned_combined_dataset.xlsx', encoding='cp949', index=False)
+        elif company_name == '현대자동차':
+            res.to_excel('./datasets/hyundai/hyundai_cleaned_combined_dataset.xlsx', encoding='cp949', index=False)
+        elif company_name == '카카오뱅크':
+            res.to_excel('./datasets/kakaobank/kakaobank_cleaned_combined_dataset.xlsx', encoding='cp949', index=False)
+        else: return
 
 
 get_preprocessed_dataset()
