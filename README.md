@@ -61,50 +61,7 @@ MTD                    -> 월초 누계
 ### 4. Add finbert score to FinanceDataReader😇
 ##### FinanceDataReader 정보에 kr-finBERT col 추가 및 결측치 처리
 ###### Code
-``` python
-from datetime import datetime
-
-s["negative"] = 0.0
-s["neutral"] = 0.0
-s["positive"] = 0.0
-s["sentiment"] = "null"
-
-filename = "./cleaned_combined_dataset_finBERT.xlsx"
-Fb_dataset = pd.read_excel(filename)
-Fb_dataset["date"] = pd.to_datetime(Fb_dataset["date"], format='%Y%m%d')
-
-for i in range(len(s)) : 
-    for j in range(len(Fb_dataset)) :
-        if(s.index[i] == Fb_dataset['date'][j]) :
-            s["negative"][i] = Fb_dataset['negative'][j]
-            s["neutral"][i] = Fb_dataset['neutral'][j]
-            s["positive"][i] = Fb_dataset['positive'][j]
-            s["sentiment"][i] = Fb_dataset['sentiment_to_num'][j]
-            
-# 결측치 처리
-# 2 = avg(1, 5), 3 = avg(2, 5), 4 = avg(3, 5) 
-for i in range(len(s)) : 
-    prev_val = {"negVal" : 0.0, "neuVal" : 0.0, "posVal" : 0.0}
-    next_val = {"negVal" : 0.0, "neuVal" : 0.0, "posVal" : 0.0}
-    avg_val = {"negVal" : 0.0, "neuVal" : 0.0, "posVal" : 0.0}
-    if(s['sentiment'][i] == None) :
-        prev_val = {"negVal" : s['negative'][i-1], "neuVal" : s["neutral"][i-1], "posVal" : s["positive"][i-1]}
-        for j in range(i, len(s)) :
-            if s['sentiment'][j] != None :
-                next_val = {"negVal" : s['negative'][j], "neuVal" : s["neutral"][j], "posVal" : s["positive"][j]}
-                break
-        avg_val['negVal'] = (prev_val['negVal']+next_val['negVal'])/2
-        avg_val['neuVal'] = (prev_val['neuVal']+next_val['neuVal'])/2
-        avg_val['posVal'] = (prev_val['posVal']+next_val['posVal'])/2
-        s['negative'][i] = avg_val['negVal']
-        s['neutral'][i] = avg_val['neuVal']
-        s['positive'][i] = avg_val['posVal']
-        s['sentiment'][i] = max(avg_val, key=avg_val.get)
-for i in range(len(s)) :
-    if(s['sentiment'][i] == "negVal") : s['sentiment'][i] = -1
-    elif(s['sentiment'][i] == "neuVal") : s['sentiment'][i] = 0
-    elif(s['sentiment'][i] == "posVal") : s['sentiment'][i] = 1
-```
+* [load_stock_by_FDR_with_TA.ipynb](https://github.com/SNU-dataproject/kr-finbert/blob/main/load_stock_by_FDR_with_TA.ipynb)
 ###### Dataset
 * [samsung_stock_dataset_finBERT_notnull.xlsx](https://github.com/SNU-dataproject/kr-finbert/blob/main/datasets/samsung/samsung_stock_dataset_finBERT_notnull.xlsx)
 * [hyundai_stock_dataset_finBERT_notnull.xlsx](https://github.com/SNU-dataproject/kr-finbert/blob/main/datasets/hyundai/hyundai_stock_dataset_finBERT_notnull.xlsx)
@@ -114,9 +71,7 @@ for i in range(len(s)) :
 
 # Model
 ### 1. LSTM📝
-* Base Model : [model_base.ipynb](https://github.com/SNU-dataproject/kr-finbert/blob/main/model/model_base.ipynb)
-* Add finBERT col : [model_add_bert.ipynb](https://github.com/SNU-dataproject/kr-finbert/blob/main/model/model_add_bert.ipynb)
-* Add all col : [model_add_all.ipynb](https://github.com/SNU-dataproject/kr-finbert/blob/main/model/model_add_all.ipynb)
-* Select columns(normalization X) : [model_select_column_no_normalize.ipynb](https://github.com/SNU-dataproject/kr-finbert/blob/main/model/model_select_column_no_normalize.ipynb)
-* Select columns(normalization O) : [model_select_column.ipynb](https://github.com/SNU-dataproject/kr-finbert/blob/main/model/model_select_column.ipynb)
-
+* LSTM : [model_LSTM.ipynb](https://github.com/SNU-dataproject/kr-finbert/blob/main/model/model_LSTM.ipynb)
+* RNN : [model_RNN.ipynb](https://github.com/SNU-dataproject/kr-finbert/blob/main/model/model_RNN.ipynb)
+* Neural Prophet : [model_NeuralProphet.ipynb](https://github.com/SNU-dataproject/kr-finbert/blob/main/model/model_NeuralProphet.ipynb)
+* ARIMA : [model_ARIMA.ipynb](https://github.com/SNU-dataproject/kr-finbert/blob/main/model/model_ARIMA.ipynb)
