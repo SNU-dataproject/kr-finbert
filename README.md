@@ -47,7 +47,7 @@ MTD                    -> 월초 누계
 * [kakaobank_cleaned_combined_dataset.xlsx](https://github.com/SNU-dataproject/kr-finbert/blob/main/datasets/kakaobank/kakaobank_cleaned_combined_dataset.xlsx)
 
 
-### 3. Add finbert score 😱
+### 3. Add finbert score 🤔
 ##### 각각 title에 대하여 kr-finBERT 모델 적용, Neg Neu Pos 수치와 대표값 표시
 ###### Code
 * [kr_finbert_getVal_from_file.ipynb](https://github.com/SNU-dataproject/kr-finbert/blob/main/kr_finbert_getVal_from_file.ipynb)
@@ -57,7 +57,7 @@ MTD                    -> 월초 누계
 * [kakaobank_cleaned_combined_dataset_finBERT.xlsx](https://github.com/SNU-dataproject/kr-finbert/blob/main/datasets/kakaobank/kakaobank_cleaned_combined_dataset_finBERT.xlsx)
 
 
-### 4. Add finbert score to FinanceDataReader😇
+### 4. Add finbert score to FinanceDataReader 🤑
 ##### FinanceDataReader 정보에 kr-finBERT col 추가 및 결측치 처리
 ###### Code
 * [load_stock_by_FDR_with_TA.ipynb](https://github.com/SNU-dataproject/kr-finbert/blob/main/load_stock_by_FDR_with_TA.ipynb)
